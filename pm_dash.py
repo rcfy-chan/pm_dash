@@ -16,6 +16,7 @@ today = pd.to_datetime(datetime.today())
 total_projects = df['ProjectTitle'].nunique()                                   
 average_duration = df['Duration'].mean()
 median_duration = df['Duration'].median()
+delayed_projects_count = df[df['Status'] == 'Delayed'].shape[0]
 
 years = pd.to_datetime(df[['Start', 'End']].stack()).dt.year.unique()
 start_year1, end_year1 = min(years), max(years)
@@ -109,14 +110,17 @@ combined_chart = alt.hconcat(alt.vconcat(project_scatter_plot, bar), project_com
 # Streamlit app layout
 st.title('Project Management Dashboard')
 
-head_col1, head_col2, head_col3 = st.columns(3)
+head_col1, head_col2, head_col3, head_col4 = st.columns(4)
 with head_col1:
     st.metric(label='Total Projects', value=total_projects)
+
+with head_col2:  
+    st.metric(label='Delayed Projects', value=delayed_projects_count)
     
-with head_col2:    
+with head_col3:    
     st.metric(label='Average Duration', value=f"{int(average_duration)} days")
 
-with head_col3:        
+with head_col4:        
     st.metric(label='Median Duration', value=f"{int(median_duration)} days")
 
 tab1, tab2 = st.tabs(["Overview", "Timeline"])
