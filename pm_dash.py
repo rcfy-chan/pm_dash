@@ -6,7 +6,7 @@ from datetime import datetime
 st.set_page_config(layout="wide")
 
 # Load data
-df = pd.read_csv('PM_Data.csv', nrows=1000)
+df = pd.read_csv('PM_Data.csv', nrows=200)
 
 # Convert 'Start' and 'End' to datetime
 df['Start'] = pd.to_datetime(df['Start'])
