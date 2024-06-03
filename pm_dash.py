@@ -202,6 +202,8 @@ with tab2:
         y=alt.Y('ProjectTitle:N', sort=alt.SortField(field='Start', order='ascending')),
         color=alt.Color('Status:N', scale=alt.Scale(domain=['Delayed', 'Ongoing', 'Completed'], range=['red', 'orange', 'green'])),
         ).properties(
+        width=600,
+        height=1000,
         title=f'Gantt Chart of {project_status} Projects ({start_year}-{end_year})'
         )
 
