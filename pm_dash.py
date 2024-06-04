@@ -80,7 +80,7 @@ project_scatter_plot = alt.Chart(assigned_to_project_counts).mark_circle(size=10
 ).properties(
     width=600,
     height=400,
-    title=f'Number of Projects by Responsible ({start_year1}-{end_year1})'
+    title=f'Distribution of Projects by Responsible Individuals and Project Components ({start_year1}-{end_year1})'
 )
 # Create bar chart
 bar = alt.Chart(assigned_counts).mark_bar().encode(
